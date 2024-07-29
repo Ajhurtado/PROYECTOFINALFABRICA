@@ -1,6 +1,6 @@
 # PROYECTOFINALFABRICA
 Proyecto Final Avanzada 2 Grupal
-La aplicación web cuenta con una cabecera y un pie de página comunes para todas sus secciones, utilizando includes/fragments. Además, incluye un menú de navegación para facilitar el acceso a las diferentes páginas.
+La aplicación web cuenta con una cabecera y un pie de página comunes para todas sus secciones. Además, incluye un menú de navegación para facilitar el acceso a las diferentes páginas.
 # DESCRIPCION
 # Página Principal
 Catálogo de Productos: En la página de inicio se presenta un catálogo completo de productos (tabla Productos).
