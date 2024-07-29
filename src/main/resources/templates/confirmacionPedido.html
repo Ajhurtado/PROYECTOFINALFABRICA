@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/media/logo-tienda.ico">
+    <title>Pedido realizado</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/bootstrap/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles -->
+    <link href="/css/estilos.css" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: #F8F9FA;
+        }
+        .card {
+            border: none;
+        }
+        .logo {
+            background-color: #212529;
+        }
+        .footer {
+            background-color: #C5C4C4;
+        }
+        .footer span {
+            font-size: 12px;
+        }
+        .botonVerPedidos, .botonVolver {
+            border-radius: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="container mt-5 mb-5">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="logo p-2 px-5">
+                    <a href="/usuario/confirmacionPedido/volverInicio">
+                        <img src="/img/logo-tienda.png" width="50" alt="Logo">
+                    </a>
+                </div>
+                <div class="invoice p-5">
+                    <h5>¡Tu pedido se ha realizado!</h5>
+                    <span class="font-weight-bold d-block mt-4">Hola, <span th:text="${session.nombre}"></span></span>
+                    <span>Tu pedido se ha realizado y será enviado en los próximos días.</span>
+                    <div class="payment border-top mt-3 mb-3 border-bottom table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                            <tr>
+                                <td><div class="py-2"><span class="d-block text-muted">Fecha compra</span> <span th:text="${#dates.format(session.pedido.fecha, 'dd-MMM-yyyy HH:mm')}"></span></div></td>
+                                <td><div class="py-2"><span class="d-block text-muted">Número pedido</span> <span th:text="${session.pedido.num_factura}"></span></div></td>
+                                <td><div class="py-2"><span class="d-block text-muted">Método de pago</span> <span th:text="${session.pedido.metodo_pago}"></span></div></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="product border-bottom table-responsive">
+                        <table class="table table-borderless">
+                            <tbody>
+                            <tr th:each="producto : ${detalleProductos}">
+                                <td width="20%"><img th:src="@{/img/productos/}+${producto.id}+@{.PNG}" width="125" alt="Producto"></td>
+                                <td width="60%">
+                                    <span class="font-weight-bold" th:text="${producto.nombre}"></span>
+                                    <div class="product-qty"><span class="font-weight-bold">Cantidad: <span th:text="${producto.cantidad}"></span></span></div>
+                                </td>
+                                <td width="18%"><div class="text-right"><span th:text="${producto.precio}"></span>€</div></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="row d-flex justify-content-end">
+                        <div class="col-md-5">
+                            <table class="table table-borderless">
+                                <tbody>
+                                <tr>
+                                    <td><span class="text-muted">Envío</span></td>
+                                    <td><span>Gratuito</span></td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-muted">Subtotal</span></td>
+                                    <td><span th:text="${session.precioSinImpuestos}">0.00</span>€</td>
+                                </tr>
+                                <tr>
+                                    <td><span class="text-muted">Impuestos</span></td>
+                                    <td><span th:text="${session.impuestos}">0.00</span>€</td>
+                                </tr>
+                                <tr class="border-top border-bottom">
+                                    <td><span class="font-weight-bold">Total</span></td>
+                                    <td><span class="font-weight-bold" th:text="${session.precioTotal}">0.00</span>€</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <p>¡Enviaremos un correo electrónico de confirmación a <span th:text="${session.email}"></span> cuando el artículo se envíe!</p>
+                    <p class="font-weight-bold mb-0">Gracias por comprar con nosotros!</p>
+                    <span>Tienda Team</span>
+                    <div class="d-flex flex-row-reverse bd-highlight">
+                        <a href="/usuario/confirmacionPedido/verPedidos">
+                            <button type="button" class="btn btn-secondary botonVerPedidos">Ver pedidos</button>
+                        </a>
+                        <a href="/usuario/confirmacionPedido/volverInicio">
+                            <button type="button" class="btn btn-secondary botonVolver">Inicio</button>
+                        </a>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between footer p-3">
+                    <span></span>
+                    <span th:text="${session.fechaActual}">12 June, 2020</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

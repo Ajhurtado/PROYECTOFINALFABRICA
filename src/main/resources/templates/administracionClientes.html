@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Administración de Clientes</title>
+</head>
+<body>
+<h1>Administración de Clientes</h1>
+<a href="/admin/clientes/nuevoCliente">Nuevo Cliente</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Acciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cliente : ${clientesAdmin}">
+        <td th:text="${cliente.id}"></td>
+        <td th:text="${cliente.nombre}"></td>
+        <td th:text="${cliente.email}"></td>
+        <td>
+            <a th:href="@{/admin/clientes/editarCliente/{id}(id=${cliente.id})}">Editar</a>
+            <a th:href="@{/admin/clientes/eliminarCliente/{id}(id=${cliente.id})}">Eliminar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

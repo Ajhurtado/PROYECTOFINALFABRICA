@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal</title>
+    <link rel="stylesheet" th:href="@{/estiloGeneral.css}">
+    <link rel="shortcut icon" href="https://avisbudgetproduction.azureedge.net/skin/frontend/budget/default/favicon.ico" type="image/x-icon" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url('https://img.freepik.com/vector-gratis/fondo-futurista-degradado-geometrico_23-2149116406.jpg');
+            background-size: cover;
+        }
+        .container {
+            text-align: center;
+        }
+        .container button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+        .container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div>
+        <button onclick="window.location.href='/usuario/login'">Ingresar como Cliente</button>
+        <button onclick="window.location.href='/admin/login'">Ingresar como Administrador</button>
+    </div>
+</div>
+</body>
+</html>

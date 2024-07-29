@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido del Carrito</title>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/bootstrap/assets/dist/css/bootstrap.min.css}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link th:href="@{/css/estilos.css}" type="text/css" rel="stylesheet">
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 800px;
+            width: 100%;
+        }
+        .list-group-item {
+            border: 1px solid #ddd;
+            border-radius: 0.5rem;
+            margin-bottom: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .list-group-item img {
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .eliminarProducto {
+            color: red;
+            text-decoration: none;
+        }
+        .eliminarProducto:hover {
+            text-decoration: underline;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 0.5rem;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        .textoCantidad {
+            color: #000;
+        }
+        .total-container {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .card {
+            border-radius: 0.5rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .card-body {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <section class="py-5 text-center">
+        <h3 class="fw-light">CARRITO DE LA COMPRA</h3>
+    </section>
+
+    <div class="list-group">
+        <span th:if="${session.carrito.size() != 0}">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-primary">Tu carrito</span>
+                <span class="badge bg-primary rounded-pill"></span>
+            </h4>
+
+            <div th:each="producto: ${session.carrito}" class="list-group-item d-flex gap-3 py-3">
+                <img th:src="@{/img/productos/}+${producto.id}+@{.PNG}" alt="Producto" width="100" height="100" class="flex-shrink-0">
+                <div class="d-flex gap-2 w-100 justify-content-between">
+                    <div>
+                        <h6 th:text="${producto.nombre}" class="mb-0"></h6>
+                        <small class="opacity-50 text-nowrap textoCantidad">Cantidad: <small th:text="${producto.cantidad}"></small></small><br>
+                        <small class="opacity-50 text-nowrap">Precio: <small class="font-weight-bold" th:text="${producto.precio}"></small> €</small>
+                    </div>
+                    <a class="eliminarProducto" th:href="@{/usuario/carrito/eliminarProducto/(id=${producto.id})}"><small class="opacity-50 text-nowrap">Eliminar</small></a>
+                </div>
+            </div>
+
+            <div class="total-container">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">Total</h6>
+                    <small><span th:text="${session.totalCarrito}"></span>€</small>
+                </div>
+            </div>
+
+            <div class="d-flex flex-row-reverse bd-highlight mt-4">
+                <div class="p-2 bd-highlight">
+                    <a th:href="@{/usuario/carrito/finalizarCompra}" class="btn btn-primary">Finalizar compra</a>
+                </div>
+            </div>
+        </span>
+
+        <span th:unless="${session.carrito.size() != 0}">
+            <section class="py-5 text-center">
+                <p class="lead text-muted">¡Tu carrito de la compra está vacío!</p>
+            </section>
+        </span>
+    </div>
+</div>
+
+<script src="@{/bootstrap/assets/dist/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>

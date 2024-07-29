@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Administración de Productos</title>
+    <link th:href="@{/bootstrap/assets/dist/css/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/estilos.css}" rel="stylesheet">
+</head>
+<body>
+
+
+<div class="container mt-5">
+    <h2>Administración de Productos</h2>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripcion</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Editar producto</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="producto : ${session.productosAdmin}">
+            <td th:text="${producto.id}"></td>
+            <td th:text="${producto.nombre}"></td>
+            <td th:text="${producto.descripcion}"></td>
+            <td th:text="${producto.cantidad}"></td>
+            <td th:text="${producto.precio}"></td>
+            <td><a class="btn btn-outline-dark w-100" th:href="@{/admin/productos/editarProducto/}+${producto.id}">Editar</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/productos/nuevoProducto}" class="btn btn-primary">Nuevo Producto</a>
+</div>
+
+
+
+<script th:src="@{/bootstrap/assets/dist/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
