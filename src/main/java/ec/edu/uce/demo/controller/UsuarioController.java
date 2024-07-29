@@ -76,7 +76,7 @@ public class UsuarioController {
             Usuario usuarioExiste = us.buscarUsuario(usuario.getNombre());
             if(usuarioExiste == null) {
                 if(usuario.getNombre() != null && usuario.getPassword() != null && passwordRepetida != null) {
-                    Roles rol = Roles.administrador;
+                    Roles rol = Roles.cliente;
                     usuario.setRol(rol);
                     String passwordEncriptada = Encriptacion.encriptarPassword(usuario.getPassword());
                     usuario.setPassword(passwordEncriptada);
