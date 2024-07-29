@@ -1,6 +1,7 @@
 package ec.edu.uce.demo.model;
 
 
+import ec.edu.uce.demo.repository.Observer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -13,7 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Entity
 @Table(name = "usuarios")
-public class Usuario implements Serializable {
+public class Usuario implements Serializable, Observer {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id")
@@ -22,7 +23,6 @@ public class Usuario implements Serializable {
     private String nombre;
     @Column(name = "email")
     private String email;
-
     @Column(name = "password")
     private String password;
     @Column(name = "nombreUsuario")
@@ -79,5 +79,10 @@ public class Usuario implements Serializable {
         this.pais = pais;
         this.provincia = provincia;
         this.localidad = localidad;
+    }
+
+    @Override
+    public void update(String message) {
+        System.out.println("Notificacion para "+getNombre()+" "+message);
     }
 }

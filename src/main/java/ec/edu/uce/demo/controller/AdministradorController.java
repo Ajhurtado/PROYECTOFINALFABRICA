@@ -3,24 +3,16 @@ package ec.edu.uce.demo.controller;
 
 import ec.edu.uce.demo.model.*;
 import ec.edu.uce.demo.service.*;
-
-
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -113,7 +105,7 @@ public class AdministradorController {
     }
 
 
-    //AQUI LO QUE VAMOS A REALIZAR ES UN EDITAR PEDIDO, PARA PODER CAMBIAR EL ESTADO DEL PEDIDO
+
     @GetMapping("/productos/editarProducto/{id}")
     public String editarProducto(Model model, @PathVariable(name="id", required=false) int id) {
         Producto producto = ps.buscarProducto(id);
@@ -216,7 +208,7 @@ public class AdministradorController {
         return "administracionClientes";
     }
 
-    //ORDENPEDIDO, EL ADMINISTRADOR
+
     @GetMapping("/procesarPedidos")
     public String cargaPedidos(Model model, HttpSession miSesion) {
         if(miSesion.getAttribute("usuarioAdmin") != null) {

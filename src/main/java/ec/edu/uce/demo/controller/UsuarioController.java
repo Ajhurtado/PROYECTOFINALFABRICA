@@ -90,7 +90,7 @@ public class UsuarioController {
         }
     }
 
-    //ESTE SERA LLAMADO POR EL ADMINISTRADOR PARA VER CUANTOS PEDIDOS TIENE EL USUARIO
+
     @GetMapping("/miPerfil/misPedidos")
     public String cargaMisPedidos(HttpSession miSesion) {
         if(miSesion.getAttribute("nombre") != null) {
@@ -103,7 +103,7 @@ public class UsuarioController {
         return "redirect:/";
     }
 
-    //SI ALCANZA EL TIEMPO,
+
     @GetMapping("/miPerfil/cancelarPedido/{id}")
     public String cancelarPedido(RedirectAttributes ra, HttpSession miSesion, @PathVariable(name="id") int id) {
         if(miSesion.getAttribute("nombre") != null) {

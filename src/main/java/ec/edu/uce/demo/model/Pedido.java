@@ -1,6 +1,5 @@
 package ec.edu.uce.demo.model;
 
-import ec.edu.uce.demo.repository.Observer;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

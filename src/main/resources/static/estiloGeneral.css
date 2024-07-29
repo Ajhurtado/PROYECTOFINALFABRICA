@@ -1,0 +1,50 @@
+/*Estilo del cotenido principal*/
+.contenido {
+	background-color: white;
+	margin-top: 2em;
+	margin-left: 5em;
+	margin-right: 5em;
+	flex: content;
+	align-items: center;
+	align-content: center;
+	align-self: center;
+	border: .05em solid rgb(230, 230, 230);
+}
+
+/*Estilo del boton de valor por dia*/
+.boton-dia {
+	background-color: rgb(237, 85, 5);
+	color: white;
+	border-color: rgb(255, 255, 255);
+
+}
+
+/*Estilo de los formularios*/
+.formulario {
+
+	margin-left: 5em;
+	margin-right: 5em;
+}
+
+/*Estilo de la casilla de los vehiculos*/
+.item-vehiculo {
+	border: .05em solid rgb(237, 85, 5);
+}
+
+/*Modificaciones al navbar de bootstrap*/
+.navbar {
+	border-top: .05em solid rgb(255, 255, 255);
+}
+
+/*Estilo del boton de subida*/
+.back-to-top {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	padding: 10px;
+
+}
+
+.back-to-top.show {
+	display: block;
+}
