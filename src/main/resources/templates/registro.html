@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <title>Registro</title>
+</head>
+<body>
+<div>
+    <form th:action="@{/usuario/registro}" th:object="${usuario}" method="post">
+        <h1>Formulario de Registro</h1>
+
+        <div> <!-- Nombre -->
+            <input type="text" th:field="*{nombre}" placeholder="Introduce tu nombre">
+            <label>Nombre de usuario</label>
+        </div>
+
+        <div> <!-- Email -->
+            <input type="email" th:field="*{email}" placeholder="Introduce tu email">
+            <label>Email</label>
+        </div>
+
+        <div> <!-- Contraseña -->
+            <input type="password" th:field="*{password}" placeholder="Introduce tu password">
+            <label>Contraseña</label>
+        </div>
+
+        <div> <!-- Repetir Contraseña -->
+            <input type="password" name="repitPassword" placeholder="Introduce tu password de nuevo">
+            <label>Repetir contraseña</label>
+        </div>
+
+        <p th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></p>
+        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+
+        <p th:text="${errorUsuarioExiste}"></p>
+
+        <div> <!-- Submit Button -->
+            <button type="submit">Registrate</button>
+        </div>
+        <p>¿Ya tienes una cuenta? <a th:href="@{login}">Inicia sesión aquí.</a></p>
+    </form>
+</div>
+</body>
+</html>
